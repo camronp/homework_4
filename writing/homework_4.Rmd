@@ -2,7 +2,9 @@
 title: "Homework 4"
 author: "Camron Pearce"
 date: "November 8, 2018"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -25,7 +27,7 @@ library(scales)
 ```
 
 ## Tidying the Data
-```{r importing data set, include = T, echo = FALSE}
+```{r importing data set, include = T, echo = FALSE, warning = FALSE}
 homicides <- read.csv("https://raw.githubusercontent.com/washingtonpost/data-homicides/master/homicide-data.csv") %>% 
   unite(city_name, city, state, sep = ", ", remove = T)
 ```
@@ -64,7 +66,7 @@ tidy(balt_test)
 
 ## Statistical Testing for Unsolved Homicides by City
 
-```{r}
+```{r, fig.width=4.5, fig.height=7}
 unsolved_df <- total_unsolved %>% 
   mutate(newcol = map2(unsolved, total_homicides,
                        ~ prop.test(.x, n = .y) %>% 
@@ -90,3 +92,8 @@ unsolved_df %>%
           subtitle = "Bars show 95% confience interval")
    
 ```
+```{r}
+#library(rmarkdown)
+#render("homework_4.rmd", output_format =  "pdf_document")
+```
+
