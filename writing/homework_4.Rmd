@@ -92,8 +92,4 @@ unsolved_df %>%
           subtitle = "Bars show 95% confience interval")
    
 ```
-```{r}
-#library(rmarkdown)
-#render("homework_4.rmd", output_format =  "pdf_document")
-```
 
